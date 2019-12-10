@@ -1,0 +1,177 @@
+{% load static %}
+
+<!DOCTYPE html>
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <title>burger html5 landing page</title>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}"/>
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <!-- Bootsnav -->
+    <link rel="stylesheet" href="{% static 'css/bootsnav.css' %}">
+    <!-- Color style -->
+    <link rel="stylesheet" href="{% static 'css/color.css' %}">
+
+    <!-- Custom stylesheet -->
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}"/>
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body data-spy="scroll" data-target="#navbar-menu" data-offset="100">
+
+<!-- Preloader -->
+<!--<div id="loading">-->
+<!--    <div id="loading-center">-->
+<!--        <div id="loading-center-absolute">-->
+<!--            <div class="object" id="object_one"></div>-->
+<!--            <div class="object" id="object_two"></div>-->
+<!--            <div class="object" id="object_three"></div>-->
+<!--            <div class="object" id="object_four"></div>-->
+<!--            <div class="object" id="object_five"></div>-->
+<!--            <div class="object" id="object_six"></div>-->
+<!--            <div class="object" id="object_seven"></div>-->
+<!--            <div class="object" id="object_eight"></div>-->
+<!--            <div class="object" id="object_big"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--End Preloader -->
+<!-- Navbar -->
+<nav class="navbar navbar-default bootsnav no-background navbar-fixed black">
+    <div class="container">
+
+        <!-- Start Atribute Navigation -->
+        <div class="attr-nav">
+            <ul>
+                <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
+            </ul>
+        </div>
+        <!-- End Atribute Navigation -->
+
+        <!-- Start Header Navigation -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img src="images/logo.png" class="logo" alt=""></a>
+        </div>
+        <!-- End Header Navigation -->
+    </div>
+
+    <!-- Start Side Menu -->
+    <div class="side">
+        <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+        <div class="widget">
+            <ul class="link">
+                <li><a href="{% url 'menu' %}">Menu</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'showcart' %}">Cart</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'register' %}">Register</a></li>
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <!-- End Side Menu -->
+</nav>
+{% block content %}
+<!-- Header -->
+<header id="hello">
+    <!-- Container -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="banner">
+                    <h3>-introducing-</h3>
+                    <h1>FATTY BURGER</h1>
+
+                    <div class="inner_banner">
+                        <div class="stamp">
+                            <img src="images/stamp.png" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- Container end -->
+</header><!-- Header end -->
+
+<!-- Block Content -->
+
+<section id="block" style="background-color:white;">
+    <div class="container" style="padding-top:50px; padding-bottom:50px;">
+        {% for product in products %}
+        <div class="col-md-4" style="padding:35px;">
+            <div class="card mb-4 shadow-sm">
+                <a href="{% url 'details' product.id %}"> <img class="bd-placeholder-img card-img-top" width="100%"
+                                                               height="225" src="{{ product.image.url }}"
+                                                               xmlns="" preserveAspectRatio="xMidYMid slice"
+                                                               focusable="false"
+                                                               role="img" aria-label="Placeholder: Thumbnail"></a>
+                <div class="pi-links">
+                    <a href="{% url 'addtocart' product.id %}" class="add-card"><i class="flaticon-bag"></i><span>ADD TO CART</span></a>
+                </div>
+                <rect width="100%" height="100%" fill="#55595c"></rect>
+                <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                </img>
+                <div class="card-body">
+                    <a href="{% url 'details' product.id %}"><p class="card-text" style="color:black; " align="center">
+                        {{ product.name }}</p></a>
+                    <div class="d-flex justify-content-between align-items-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+</section>
+{% endblock %}
+
+
+<!-- Footer -->
+<footer>
+    <!-- Container -->
+    <div class="container">
+        <div class="row">
+            <div class="footer-copyright">
+                <p class="wow fadeInRight" data-wow-duration="1s">
+                    Made by Apollo 11<i class="fa fa-heart"></i>
+                    <br>
+                    2019. All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div><!-- Container end -->
+</footer><!-- Footer end -->
+
+
+<!-- scroll up-->
+<div class="scrollup">
+    <a href="#"><i class="fa fa-chevron-up"></i></a>
+</div><!-- End off scroll up->
+
+        <!-- JavaScript -->
+<script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- Bootsnav js -->
+<script src="{% static 'js/bootsnav.js' %}"></script>
+
+<!-- JS Implementing Plugins -->
+<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

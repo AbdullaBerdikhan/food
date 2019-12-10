@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+{% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<style>
+    element.style {
+}
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+body, html {
+    text-align: left;
+    font-family: speedee;
+    font-size: 16px;
+    font-size: 1rem;
+}
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+user agent stylesheet
+html {
+    color: -internal-root-color;
+}
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.component-product-detail.product-detail.ng-scope {
+}
+img{
+height:700px;
+width:800px;
+}
+</style>
+
+<div data-ng-controller="productController" class="component-product-detail product-detail ng-scope" style="padding:200px;>
+    <input type="hidden" class="energydrinklabel" value="Energy" autocomplete="off">
+    <div class="itemID" data-item-id="200449" data-item-name="Sausage McMuffin®"
+         data-currently-selected-text="currently selected"></div>
+
+    <!--
+            Cont Hero Start
+        -->
+
+    <div data-component="contHero" class="product-detail__main-content component-spacing" style="display:flex;">
+        <div class="visible-xs product-detail__main-content-mob-head">
+            <h1 class="heading typo-h1">Sausage McMuffin®</h1>
+
+            <!-- ngIf: productSizes && productSizes.length > 1 -->
+        </div>
+        <div class="product-detail__main-content-img col">
+            <picture>
+                <img class="img-responsive cont-100"
+                     src="{{ products.image.url }}"
+                     alt="Sausage McMuffin®" >
+                <!-- <img class="img-responsive" srcset="https://dummyimage.com/772x440" alt="https://dummyimage.com/772x440" /> -->
+            </picture>
+            <!-- <img class="img-responsive" src="https://dummyimage.com/772x440/000/fff" alt="https://dummyimage.com/772x440" /> -->
+        </div>
+        <div class="container">
+        <div class="product-detail__main-content-data hidden-xs">
+            <div class="" style="width:500px;">
+                <h1 class="heading typo-h1">{{products.name}}</h1>
+            <br/><br/>
+                <div class="calorie-count">
+							<span class="copy" aria-hidden="true">400 Cal.
+
+							</span>
+                    <span class="sr-only sr-only-pd">
+							400 Cal.
+						</span></div>
+
+                <!-- ngIf: productSizes && productSizes.length > 1 -->
+                <p class="product-detail__description">{{products.description}}.</p>
+
+            </div>
+        </div><br/>
+            <a href="{% url 'order'  products.id %}" class="btn btn-primary btn-lg " tabindex="-1" role="button" aria-disabled="true">Order</a>&nbsp;&nbsp;
+            <a href="{% url 'addtocart'  products.id %}" class="btn btn-primary btn-lg" tabindex="-1" role="button" aria-disabled="true">Add To Cart</a>
+
+    </div></div>
+
+</div>
+<!-- RELATED PRODUCTS section end -->
+
+{% endblock %}
